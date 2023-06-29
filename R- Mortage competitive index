@@ -1,0 +1,67 @@
+Given a loan data set from institutions in different countries, define and evaluate a competitiveness index for each country
+
+The data frame contains five columns:
+
+Year: The year the application was filed.
+Country: The country where the bank is located.
+Inst_id: Institutional id of the bank that processed the application.
+Loan_amount: The loan amount applied for.
+Action_type: The loan is approved (1) or rejected (0).
+
+Process the data and calculate the competitive index for each
+country for each year. The competitive index is determined with the
+following process:
+1. Consider only the applications which are approved (Action_ type = 1).
+2. Calculate the total loan amount sanctioned by a bank each year in a country: Loan_amt_bank.
+3. Calculate the total loan amount sanctioned per year by all the banks for each country: Loan_amt_country.
+4. Calculate the squared market-share for each bank:(Loan_amt_bank/Loan_amt_country)^2.
+5. Calculate the Competitive_index for each country as the sum of the squared market-shares (calculated in step 4) each year.
+6. Sort the data frame by "Year" in ascending order and "Country" in alphabetical order.
+7. Round the "Competitive_index" to three digits.
+Note: You can use package "dplyr" for data processing.
+
+For example, the data for some mortgage applications is as follows:
+"Year", "Country", "Inst_id", "Loan_amount","Action_taken"
+2010."AUS"."001".,449000,1 2011,"AUS"."002",807000,1
+2010,"AUS"."002",279000,1 2011."CAN","001",200000,0
+2010, "AUS"."002".748000,1 2011."CAN"."001",644000,1
+2010,"CAN","001",949000,1 2011,"CAN","002",962000.1
+2010,"AUS","002",587000,1 2011,"AUS","001",696000,1
+2011,"AUS","002",974000,1 2011,"AUS","001",565000,1
+
+The data once processed is,
+"Year","Country ","Competitive _index"
+2010,"AUS",0.659
+2010,"CAN",1
+2011,"AUS"0.515
+2011,."CAN",0.52
+
+Explanation:
+At first, the rejected mortgage application in row 4 is removed
+(Instruction: 1).
+In 2010, there are four mortgage applications filed in AUS that are
+approved by two institutions "001 and "002". The total amount of
+sanctioned loan (Loan_amt_bank) by "001" and "002" is 449000 and is
+1614000 (total of 279000,748000 and 587000), respectively
+(Instruction: 2).
+So, the total loan sanctioned (Loan_amt_country) in AUS in the year
+2010 is 2063000 (Instruction: 3).
+The squared market-share for both the institute will be 0.047 and
+0.612 (Instruction: 4).
+Therefore, the competitive-index for AUS in 2010 will be 0.659, i.e. the
+sum of 0.047 and 0.612 (Instruction: 5).
+Similarly, the other "Competitive_index" values are calculated.
+Finally, the output data frame is sorted and "Competitive_index" is
+rounded to three decimals (Instruction: 6 & 7).
+
+Function Description
+Complete the function calculate_ competitive_ index in the editor below.
+The function has the following parameter(s):
+df_ data: The data frame created from the csv file has five
+columns: "Year", "Country", "Inst_id", "Loan_amount", and
+"Action_taken"
+
+Constraints
+Each data frame consists of at most 1000 rows
+The instructions are complete and data is valid.
+Do not make any assumptions beyond the problem statement.
