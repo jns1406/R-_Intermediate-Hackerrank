@@ -1,0 +1,69 @@
+Analyze the target audience for some Facebook ads.
+The data set has the following columns:
+
+1. "ad_id": unique identifier for an advertisement
+2. "campaign _id": unique identifier associated with campaign tracking
+3. "age"": age of the person to whom the ad is shown
+4. "gender": gender of the person to whom the ad is shown
+5. "impressions": the number of times the ad was shown
+6. "clicks": the number of clicks on the ad
+7. "conversions": the number of users who made orders after seeing the ad\
+8. "spent": amount paid to the platform to show the ad
+
+Define user combinations by 'age' and 'gender columns that have minimal costs per impression, click, and conversion. Process the data as follows.
+
+> Replace character column "age" with a numeric column that contains the mean value from the string, For example, instead of string value "30-34", assign the numeric value "32", the result of (30 + 34)/2.
+> The costs per impression, click, and conversion are calculated as "spent" by the values "clicks", "impressions", and "conversions".
+> Calculate costs per impressions, clicks, and conversions by columns "age" and "gender" for each advertisement campaign.
+> For each combination of "age" and "gender", columns calculate mean costs per impression, click, and conversion. Round values to 5 digits after the decimal point.
+> Determine the combinations of "age" and "gender" with minimal costs per impression, click, and conversion.
+
+The result data set should be a table with 4 columns and 3 rows
+Columns should be "metric_name", "metric_ value", "age", and
+"gender". Rows should have data about "age" and "gender" by
+metric names in the following order: "mean_cost_per_impressions".
+"mean_cost_per_clicks", and "mean_cost_per_conversions" metrics.
+Keep only metrics with non-zero values.
+
+Function Description
+Complete the function define_setting_ads_campaigns the editor below.
+
+The function has the following parameter:
+dfdata; Data frame with data from 'csv' file
+
+Constraints:
+
+Use basic R functions.
+Each data frame consists of at most 1000 rows.
+Do not make any assumptions beyond the problem statement.
+
+
+Input Format For Custom Testing
+Sample Case 0
+"ad_id","campaign_id","age","gender","impressions","clicks","conversions","spent"
+779057,115954,"40-44","M",4414,0,1,0
+1121888,144671,"30-34","F",41672,6,2,10.54999995
+950969,123588,"45-49","M",255,0,1,0
+1122212,144725,"45-49","F",685211,164,4,247.3200026
+1314330,179897,"40-44","M",17559,1,1,1.49000001
+711785,104423,"45-49","F",292,0,1,0
+1121254,144565,"30-34","M",124005,11,4,21.84999979
+1122227,144728,"45-49","F",183293,53,2,73.74999964
+1121296,144573,"35-39","M",180351,21,1,37.13000011
+952100,123777,"35-39","F",810,0,1,0
+1314348,179915,"45-49","M",121769,13,2,18.41999996
+951941,123750,"30-34","F",2764,1,1,1.559999943
+1121602,144624,"45-49","M",915451,125,6,220.559999
+1121338,144580,"35-39","M",31265,4,1,5.789999902
+736988,109472,"30-34","M",3891,1,1,1.090000033
+1122233,144729,"45-49","F",436943,109,1,145.8199974
+777261,115641,"40-44","M",19603,4,1,5.279999971
+710968,104287,"35-39","F",5864,2,1,2.799999952
+780760,116267,"45-49","F",17167,5,1,6.910000086
+1314331,179898,"40-44","M",137879,19,2,28.47000003
+
+Sample output:
+"metric_name","metric_value","age","gender"
+"mean_cost_per_impressions",0.00013,47,"M"
+"mean_cost_per_clicks",1.4,37,"F"
+"mean_cost_per_conversions",1.4,37,"F"
